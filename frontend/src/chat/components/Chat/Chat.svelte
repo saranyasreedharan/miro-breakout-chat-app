@@ -8,6 +8,7 @@
 		Message as MessageInterface,
 		ChatController,
 		ChatSettings,
+		MessageHistoryHandler
 	} from '../../interfaces/chat'
 
 	export let chatFactory: (settings: ChatSettings) => ChatController
@@ -22,6 +23,9 @@
 	const handleNewMessage: MessageHandler = (text, author) => {
 		messages = [...messages, {text, author, timestamp: new Date()}]
 	}
+	const handleMessageHistory: MessageHistoryHandler = async(messageHistory) => {
+        messages = messageHistory
+    }
 
 	const handleMessageSend = () => {
 		if (!newMessageText) return
@@ -34,7 +38,7 @@
 	}
 
 	onMount(() => {
-		chatController = chatFactory({roomId, name, messageHandler: handleNewMessage})
+		chatController = chatFactory({roomId, name, messageHandler: handleNewMessage, messageHistoryHandler: handleMessageHistory});
 	})
 </script>
 
