@@ -11,12 +11,15 @@ Add multiple local chats to you Miro board. Uses WebSockets and Miro Web SDK.
 ## Start-up
 1. Get your client id as [described here](https://developers.miro.com/docs/how-to-start) and save it in the `./frontend/.env` file (use `.env_example` as a template)
 
-2. Install packages and run
+2. Downlaod and install MySQL (https://dev.mysql.com/downloads/installer/)
+3. Configure DB connection details in backend/.env
+
+4. Install packages and run
 - If you have Docker, just launch `first-run.sh` - it will run `npm install` in both `backend` and `frontend` folders and then run `docker-compose up -d` (application folders including node_modules are mounted to containers to provide live reloading). Next time, you can just run `docker-compose up -d` in your root folder. Use `docker-compose down` to stop containers.
 
 - If you don't have Docker, run `npm install && npm run dev` in 2 parallel instances of the terminal from both backend and frontend folders.
 
-3. If everything goes well, you should see a webpage at http://localhost (also an empty array should be returned if you GET http://localhost:8081/rooms - this is an endpoint to get current chat rooms).
+5. If everything goes well, you should see a webpage at http://localhost (also an empty array should be returned if you GET http://localhost:8081/rooms - this is an endpoint to get current chat rooms).
 
 ## Connecting to Miro
 
